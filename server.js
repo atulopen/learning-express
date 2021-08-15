@@ -19,7 +19,17 @@ app.use((req, res, next) => {
 app.use('/friends', friendsRouter);
 app.use('/messages', messageRouter);
 
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use('/site', express.static(path.join(__dirname, 'public')))
+
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'My friends are very clever',
+        caption: 'Let\'s go Auli',
+    })
+})
 
 
 app.listen(PORT, () => {
