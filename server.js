@@ -1,8 +1,9 @@
 const express = require('express');
 const friendsRouter = require('./routes/friend.route');
 const messageRouter = require('./routes/message.route');
+const path = require("path");
 
-const PORT = 3000;
+const PORT = 3001;
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
 
 app.use('/friends', friendsRouter);
 app.use('/messages', messageRouter);
+
+app.use('/site', express.static(path.join(__dirname, 'public')))
 
 
 app.listen(PORT, () => {
