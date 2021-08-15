@@ -1,5 +1,7 @@
+const path = require('path');
+
 function get(req, res) {
-    return res.end('Albert is a very good human being!')
+    return res.sendfile(path.join(__dirname, '..', 'public', 'images', 'myphoto.jpg'));
 }
 
 function post(req, res) {
